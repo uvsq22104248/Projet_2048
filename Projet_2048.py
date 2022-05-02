@@ -17,6 +17,5 @@ for i in range(0,4) :
     canvas.create_line((0, i*175), (LARGEUR, i*175), fill="black", width=5)
 
 
-
 canvas.grid()
 racine.mainloop()
