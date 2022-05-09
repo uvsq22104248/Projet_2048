@@ -12,8 +12,23 @@ LARGEUR2 = 700
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg = "orange", height = HAUTEUR1, width = LARGEUR1)
 
+matrice = []
 
-button_play = tk.Button(racine, text = "Play", bg = "yellow", height = 2, width = 10)
+def start_game() :
+    matrice = [[0] * 4 for i in range(4)]
+    print(matrice)
+
+
+racine.title("2048")
+
+
+canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
+
+for i in range(0,4) :
+    canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
+    canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
+
+button_play = tk.Button(racine, text = "Play", bg = "yellow", height = 2, width = 10, command = start_game)
 button_play.place(x=825, y=100)
 
 button_left = tk.Button(racine, text = "Left", bg = "yellow", height = 2, width = 10)
@@ -37,12 +52,7 @@ button_save.place(x=775, y=500)
 button_load = tk.Button(racine, text = "Load", bg = "yellow", height = 2, width = 10)
 button_load.place(x=875, y=500)
 
-canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
 
-for i in range(0,4) :
-    canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
-    canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
-
-
+start_game()
 canvas.grid()
 racine.mainloop()
