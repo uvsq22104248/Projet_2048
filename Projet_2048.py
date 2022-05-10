@@ -12,47 +12,93 @@ LARGEUR2 = 700
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg = "orange", height = HAUTEUR1, width = LARGEUR1)
 
-matrice = []
-
-def start_game() :
-    matrice = [[0] * 4 for i in range(4)]
-    print(matrice)
-
-
-racine.title("2048")
-
-
 canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
 
 for i in range(0,4) :
     canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
     canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
 
+
+def start_game() :
+    matrice = [[0] * 4 for i in range(4)]
+    
+    print(matrice)
+    p = rd.randint(1,10)
+    for i in range(1,5) :
+        for j in range(1,5) :
+            if p == 1 :
+                [i][j] = 4
+                canvas.create_rectangle((175*i, 175*j), (175*j, 175*i), fill="yellow")
+            else :
+                [i][j] = 2
+                canvas.create_rectangle((175*i, 175*j), (175*j, 175*i), fill="yellow")
+
+    
+
+
+def tuiles_left() :
+    x = 2
+
+
+def tuiles_right() :
+    x = 2
+
+
+def tuiles_up() :
+    x = 2
+
+
+def tuiles_down() :
+    x = 2
+
+
+def end_game() :
+    x = 2
+
+
+def save_game() :
+    x = 2
+
+
+def load_game() :
+    x = 2
+
+
+racine.title("2048")
+
+
 button_play = tk.Button(racine, text = "Play", bg = "yellow", height = 2, width = 10, command = start_game)
 button_play.place(x=825, y=100)
 
-button_left = tk.Button(racine, text = "Left", bg = "yellow", height = 2, width = 10)
+button_left = tk.Button(racine, text = "Left", bg = "yellow", height = 2, width = 10, command = tuiles_left)
 button_left.place(x=775, y=250)
 
-button_right = tk.Button(racine, text = "Right", bg = "yellow", height = 2, width = 10)
+button_right = tk.Button(racine, text = "Right", bg = "yellow", height = 2, width = 10, command = tuiles_right)
 button_right.place(x=875, y=250)
 
-button_up = tk.Button(racine, text = "Up", bg = "yellow", height = 2, width = 10)
+button_up = tk.Button(racine, text = "Up", bg = "yellow", height = 2, width = 10, command = tuiles_up)
 button_up.place(x=825, y=200)
 
-button_down = tk.Button(racine, text = "Down", bg = "yellow", height = 2, width = 10)
+button_down = tk.Button(racine, text = "Down", bg = "yellow", height = 2, width = 10, command = tuiles_down)
 button_down.place(x=825, y=300)
 
-button_exit = tk.Button(racine, text = "Exit", bg = "yellow", height = 2, width = 10)
+button_exit = tk.Button(racine, text = "Exit", bg = "yellow", height = 2, width = 10, command = end_game)
 button_exit.place(x=825, y=400)
 
-button_save = tk.Button(racine, text = "Save", bg = "yellow", height = 2, width = 10)
+button_save = tk.Button(racine, text = "Save", bg = "yellow", height = 2, width = 10, command = save_game)
 button_save.place(x=775, y=500)
 
-button_load = tk.Button(racine, text = "Load", bg = "yellow", height = 2, width = 10)
+button_load = tk.Button(racine, text = "Load", bg = "yellow", height = 2, width = 10, command = load_game)
 button_load.place(x=875, y=500)
 
 
 start_game()
+#tuiles_left()
+#tuiles_right()
+#tuiles_up()
+#tuiles_down()
+#end_game()
+#save_game()
+#load_game
 canvas.grid()
 racine.mainloop()
