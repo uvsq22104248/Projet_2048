@@ -9,12 +9,16 @@ LARGEUR1 = 1000
 HAUTEUR2 = 700
 LARGEUR2 = 700
 
+
+#création canvas#
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg = "orange", height = HAUTEUR1, width = LARGEUR1)
 racine.title("2048")
 
+
 #génère matrice 4*4#
 matrice = [[0] * 4 for i in range(4)]
+
 
 def start_game() :
 
@@ -40,11 +44,13 @@ def start_game() :
     for i in range(4) :
         for j in range(4) :
             
+            #si c'est un 4, ça créé un carré avec un 4 dedans#
             if p == 1 :
                 matrice[pi][pj] = 4
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
                 canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
-                   
+
+            #si c'est un 2, ça créé un carré avec un 2 dedans#       
             else :
                 matrice[pi][pj] = 2
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
@@ -55,21 +61,26 @@ def start_game() :
 
 
 def tuiles_left() :
+
     for i in range(4) :
         for j in range(4) :
+
             #quand tuile pas égale à 0#
             if matrice[i][j] != 0 :
+
                 #tuile se décale vers la gauche et s'ajoute à une tuile égale#
                 if matrice[i][j] == matrice[i][j-1] :
                     matrice[i][j-1] += matrice[i][j]
                     matrice[i][j] = 0
+
                 #tuile se décale vers la gauche#
                 else :
                     matrice[i][j-1] = matrice[i][j]
                     matrice[i][j] = 0
 
                 return
-            
+
+            #quand tuile égale à 0, se décale vers la gauche#
             else :
                 matrice[i][j-1] = matrice[i][j]
                 matrice[i][j] = 0
@@ -86,11 +97,13 @@ def tuiles_left() :
     for i in range(4) :
         for j in range(4) :
             
+            #si c'est un 4, ça créé un carré avec un 4 dedans#
             if p == 1 :
                 matrice[pi][pj] = 4
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
                 canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
-                   
+
+            #si c'est un 2, ça créé un carré avec un 2 dedans#       
             else :
                 matrice[pi][pj] = 2
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
@@ -102,21 +115,26 @@ def tuiles_left() :
 
 
 def tuiles_right() :
+
     for i in range(4) :
         for j in range(4) :
+
             #quand tuile pas égale à 0#
             if matrice[i][j] != 0 :
+
                 #tuile se décale vers la droite et s'ajoute à une tuile égale#
                 if matrice[i][j] == matrice[i][j+1] :
                     matrice[i][j+1] += matrice[i][j]
                     matrice[i][j] = 0
+
                 #tuile se décale vers la droite#
                 else :
                     matrice[i][j+1] = matrice[i][j]
                     matrice[i][j] = 0
 
                 return
-            
+
+            #quand tuile égale à 0, se décale vers la droite#
             else :
                 matrice[i][j+1] = matrice[i][j]
                 matrice[i][j] = 0
@@ -133,11 +151,13 @@ def tuiles_right() :
     for i in range(4) :
         for j in range(4) :
             
+            #si c'est un 4, ça créé un carré avec un 4 dedans#
             if p == 1 :
                 matrice[pi][pj] = 4
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
                 canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
-                   
+
+            #si c'est un 2, ça créé un carré avec un 2 dedans#       
             else :
                 matrice[pi][pj] = 2
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
@@ -148,14 +168,18 @@ def tuiles_right() :
 
 
 def tuiles_up() :
+
     for i in range(4) :
         for j in range(4) :
+
             #quand tuile pas égale à 0#
             if matrice[i][j] != 0 :
+
                 #tuile se décale vers le haut et s'ajoute à une tuile égale#
                 if matrice[i][j] == matrice[i-1][j] :
                     matrice[i-1][j] += matrice[i][j]
                     matrice[i][j] = 0
+
                 #tuile se décale vers le haut#
                 else :
                     matrice[i-1][j] = matrice[i][j]
@@ -163,6 +187,7 @@ def tuiles_up() :
 
                 return
             
+            #quand tuile égale à 0, se décale vers le haut#
             else :
                 matrice[i-1][j] = matrice[i][j]
                 matrice[i][j] = 0
@@ -179,11 +204,13 @@ def tuiles_up() :
     for i in range(4) :
         for j in range(4) :
             
+            #si c'est un 4, ça créé un carré avec un 4 dedans#
             if p == 1 :
                 matrice[pi][pj] = 4
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
                 canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
-                   
+
+            #si c'est un 2, ça créé un carré avec un 2 dedans#       
             else :
                 matrice[pi][pj] = 2
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
@@ -194,14 +221,18 @@ def tuiles_up() :
 
 
 def tuiles_down() :
+
     for i in range(4) :
         for j in range(4) :
+
             #quand tuile pas égale à 0#
             if matrice[i][j] != 0 :
+
                 #tuile se décale vers le bas et s'ajoute à une tuile égale#
                 if matrice[i][j] == matrice[i+1][j] :
                     matrice[i+1][j] += matrice[i][j]
                     matrice[i][j] = 0
+
                 #tuile se décale vers le bas#
                 else :
                     matrice[i+1][j] = matrice[i][j]
@@ -209,6 +240,7 @@ def tuiles_down() :
 
                 return
             
+            #quand tuile égale à 0, se décale vers le bas#
             else :
                 matrice[i+1][j] = matrice[i][j]
                 matrice[i][j] = 0
@@ -225,11 +257,13 @@ def tuiles_down() :
     for i in range(4) :
         for j in range(4) :
             
+            #si c'est un 4, ça créé un carré avec un 4 dedans#
             if p == 1 :
                 matrice[pi][pj] = 4
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
                 canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
-                   
+
+            #si c'est un 2, ça créé un carré avec un 2 dedans#       
             else :
                 matrice[pi][pj] = 2
                 canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
@@ -240,7 +274,8 @@ def tuiles_down() :
 
 
 def end_game() :
-    #partie terminée,le score est donné#
+    #partie terminée, le score est donné#
+
     b = 0
     for i in range(16):
       b += int(input())
@@ -250,6 +285,7 @@ def end_game() :
 
 def save_game() :
     #ouvre un fichier et écrit dedans#
+
     fic = open("fichier.txt","w")
     for i in range (4):
         for j in range(4):
@@ -259,6 +295,7 @@ def save_game() :
 
 def load_game() :
     #ouvre un fichier et le lit et écrit ce qu'il y a dedans#
+    
     fic = open("fichier.tkt","r")
     print(str(fic))
     fic.close()
