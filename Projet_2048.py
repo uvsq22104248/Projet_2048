@@ -57,25 +57,186 @@ def start_game() :
 def tuiles_left() :
     for i in range(4) :
         for j in range(4) :
+            #quand tuile pas égale à 0#
             if matrice[i][j] != 0 :
-                
+                #tuile se décale vers la gauche et s'ajoute à une tuile égale#
+                if matrice[i][j] == matrice[i][j-1] :
+                    matrice[i][j-1] += matrice[i][j]
+                    matrice[i][j] = 0
+                #tuile se décale vers la gauche#
+                else :
+                    matrice[i][j-1] = matrice[i][j]
+                    matrice[i][j] = 0
+
+                return
+            
+            else :
+                matrice[i][j-1] = matrice[i][j]
+                matrice[i][j] = 0
+
+            return
+
+    #génère 3 chiffres au hazard#
+    #pour la probabilité d'un 2 ou un 4#
+    p = rd.randint(1, 10)
+    #pour la probabilité de placement de la tuile dans le quadrillage à droite#
+    pi = rd.randint(0,3)
+    pj = rd.randint(1,3)
     
+    for i in range(4) :
+        for j in range(4) :
+            
+            if p == 1 :
+                matrice[pi][pj] = 4
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
+                   
+            else :
+                matrice[pi][pj] = 2
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="2")
+
     
-    
-                print(matrice)
+    print(matrice)
     
 
 
 def tuiles_right() :
-    x = 2
+    for i in range(4) :
+        for j in range(4) :
+            #quand tuile pas égale à 0#
+            if matrice[i][j] != 0 :
+                #tuile se décale vers la droite et s'ajoute à une tuile égale#
+                if matrice[i][j] == matrice[i][j+1] :
+                    matrice[i][j+1] += matrice[i][j]
+                    matrice[i][j] = 0
+                #tuile se décale vers la droite#
+                else :
+                    matrice[i][j+1] = matrice[i][j]
+                    matrice[i][j] = 0
+
+                return
+            
+            else :
+                matrice[i][j+1] = matrice[i][j]
+                matrice[i][j] = 0
+
+            return
+
+    #génère 3 chiffres au hazard#
+    #pour la probabilité d'un 2 ou un 4#
+    p = rd.randint(1, 10)
+    #pour la probabilité de placement de la tuile dans le quadrillage à gauche#
+    pi = rd.randint(0,3)
+    pj = rd.randint(0,2)
+    
+    for i in range(4) :
+        for j in range(4) :
+            
+            if p == 1 :
+                matrice[pi][pj] = 4
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
+                   
+            else :
+                matrice[pi][pj] = 2
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="2")
+
+    
+    print(matrice)
 
 
 def tuiles_up() :
-    x = 2
+    for i in range(4) :
+        for j in range(4) :
+            #quand tuile pas égale à 0#
+            if matrice[i][j] != 0 :
+                #tuile se décale vers la droite et s'ajoute à une tuile égale#
+                if matrice[i][j] == matrice[i-1][j] :
+                    matrice[i-1][j] += matrice[i][j]
+                    matrice[i][j] = 0
+                #tuile se décale vers la droite#
+                else :
+                    matrice[i-1][j] = matrice[i][j]
+                    matrice[i][j] = 0
+
+                return
+            
+            else :
+                matrice[i-1][j] = matrice[i][j]
+                matrice[i][j] = 0
+
+            return
+
+    #génère 3 chiffres au hazard#
+    #pour la probabilité d'un 2 ou un 4#
+    p = rd.randint(1, 10)
+    #pour la probabilité de placement de la tuile dans le quadrillage#
+    pi = rd.randint(1,3)
+    pj = rd.randint(0,3)
+    
+    for i in range(4) :
+        for j in range(4) :
+            
+            if p == 1 :
+                matrice[pi][pj] = 4
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
+                   
+            else :
+                matrice[pi][pj] = 2
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="2")
+
+    
+    print(matrice)
 
 
 def tuiles_down() :
-    x = 2
+    for i in range(4) :
+        for j in range(4) :
+            #quand tuile pas égale à 0#
+            if matrice[i][j] != 0 :
+                #tuile se décale vers la droite et s'ajoute à une tuile égale#
+                if matrice[i][j] == matrice[i+1][j] :
+                    matrice[i+1][j] += matrice[i][j]
+                    matrice[i][j] = 0
+                #tuile se décale vers la droite#
+                else :
+                    matrice[i+1][j] = matrice[i][j]
+                    matrice[i][j] = 0
+
+                return
+            
+            else :
+                matrice[i+1][j] = matrice[i][j]
+                matrice[i][j] = 0
+
+            return
+
+    #génère 3 chiffres au hazard#
+    #pour la probabilité d'un 2 ou un 4#
+    p = rd.randint(1, 10)
+    #pour la probabilité de placement de la tuile dans le quadrillage#
+    pi = rd.randint(0,2)
+    pj = rd.randint(0,3)
+    
+    for i in range(4) :
+        for j in range(4) :
+            
+            if p == 1 :
+                matrice[pi][pj] = 4
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
+                   
+            else :
+                matrice[pi][pj] = 2
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="2")
+
+    
+    print(matrice)
 
 
 def end_game() :
