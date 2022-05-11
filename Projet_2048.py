@@ -152,11 +152,11 @@ def tuiles_up() :
         for j in range(4) :
             #quand tuile pas égale à 0#
             if matrice[i][j] != 0 :
-                #tuile se décale vers la droite et s'ajoute à une tuile égale#
+                #tuile se décale vers le haut et s'ajoute à une tuile égale#
                 if matrice[i][j] == matrice[i-1][j] :
                     matrice[i-1][j] += matrice[i][j]
                     matrice[i][j] = 0
-                #tuile se décale vers la droite#
+                #tuile se décale vers le haut#
                 else :
                     matrice[i-1][j] = matrice[i][j]
                     matrice[i][j] = 0
@@ -172,7 +172,7 @@ def tuiles_up() :
     #génère 3 chiffres au hazard#
     #pour la probabilité d'un 2 ou un 4#
     p = rd.randint(1, 10)
-    #pour la probabilité de placement de la tuile dans le quadrillage#
+    #pour la probabilité de placement de la tuile dans le quadrillage en bas#
     pi = rd.randint(1,3)
     pj = rd.randint(0,3)
     
@@ -198,11 +198,11 @@ def tuiles_down() :
         for j in range(4) :
             #quand tuile pas égale à 0#
             if matrice[i][j] != 0 :
-                #tuile se décale vers la droite et s'ajoute à une tuile égale#
+                #tuile se décale vers le bas et s'ajoute à une tuile égale#
                 if matrice[i][j] == matrice[i+1][j] :
                     matrice[i+1][j] += matrice[i][j]
                     matrice[i][j] = 0
-                #tuile se décale vers la droite#
+                #tuile se décale vers le bas#
                 else :
                     matrice[i+1][j] = matrice[i][j]
                     matrice[i][j] = 0
@@ -218,7 +218,7 @@ def tuiles_down() :
     #génère 3 chiffres au hazard#
     #pour la probabilité d'un 2 ou un 4#
     p = rd.randint(1, 10)
-    #pour la probabilité de placement de la tuile dans le quadrillage#
+    #pour la probabilité de placement de la tuile dans le quadrillage en haut#
     pi = rd.randint(0,2)
     pj = rd.randint(0,3)
     
