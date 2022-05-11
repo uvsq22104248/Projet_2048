@@ -36,8 +36,10 @@ def start_game() :
 
     if matrice[pi][pj] == 4 :
         canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+        canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica", text="4")
     else :
         canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+        canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica", text="2")
 
     print(matrice)
 
