@@ -14,15 +14,19 @@ racine = tk.Tk()
 canvas = tk.Canvas(racine, bg = "orange", height = HAUTEUR1, width = LARGEUR1)
 racine.title("2048")
 
-canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
-for i in range(1,4) :
-    canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
-    canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
-
 
 matrice = [[0] * 4 for i in range(4)]
 
 def start_game() :
+
+    canvas.delete("all")
+
+    canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
+    
+    for i in range(1,4) :
+        canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
+        canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
+
     matrice = [[0] * 4 for i in range(4)]
     p = rd.randint(1, 10)
     pi = rd.randint(0,3)
