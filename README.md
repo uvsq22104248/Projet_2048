@@ -10,11 +10,13 @@ https://github.com/uvsq22104248/Projet_2048
 #########################################
 
 Utilisation du programme :
-- appuyer sur le bouton Play pour créer une tuile au hasard dans la matrice (problème, la tuile apparait avant d'appuyer)
+- appuyer sur le bouton Play pour créer une tuile au hasard dans la matrice
 - appuyer sur les boutons Left/Right/Up/Down pour déplacer les tuiles et les ajouter à celles déja présentent si elles sont égales
 - appuyer sur le bouton Exit pour finir une partie et afficher le score 
 - appuyer sur le bouton Save pour sauvegarder une partie en cours dans un texte
 - appuyer sur le bouton Load pour charger une partie enregistrée dans un fichier
+
+(problème, les fonctions s'exécutent avant de clicer sur les boutons aussi)
 
 Sites utilisés (pas de copié collé, juste de l'aide) :
 https://github.com/uvsq-info/l1-python/blob/master/cours/07_interface_graphique/07_gui.ipynb
