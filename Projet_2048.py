@@ -1,5 +1,6 @@
 #Projet_2048#
 
+from re import L
 import tkinter as tk
 import random as rd
 
@@ -11,43 +12,48 @@ LARGEUR2 = 700
 
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg = "orange", height = HAUTEUR1, width = LARGEUR1)
+racine.title("2048")
 
 canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
-
 for i in range(1,4) :
     canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
     canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
 
 
+matrice = [[0] * 4 for i in range(4)]
+
 def start_game() :
     matrice = [[0] * 4 for i in range(4)]
-    print(matrice)
-
-    p = rd.randint(1,10)
+    p = rd.randint(1, 10)
     pi = rd.randint(0,3)
     pj = rd.randint(0,3)
-
+    
     for i in range(4) :
         for j in range(4) :
+            
             if p == 1 :
                 matrice[pi][pj] = 4
+                r = canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                t = canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
+                   
             else :
                 matrice[pi][pj] = 2
-
-    if matrice[pi][pj] == 4 :
-        canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
-        canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica", text="4")
-    else :
-        canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
-        canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica", text="2")
-
+                r = canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                t = canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="2")
+                
     print(matrice)
-
     
 
 
 def tuiles_left() :
-    x = 2
+    for i in range(4) :
+        for j in range(4) :
+            if matrice[i][j] != 0 :
+                l = matrice[i][0]
+                matrice[i][0] = l
+                matrice[i][j] = 0
+    print(matrice)
+    
 
 
 def tuiles_right() :
@@ -67,16 +73,19 @@ def end_game() :
 
 
 def save_game() :
-    x = 2
+    fic = open("fichier.txt","w")
+    for i in range (4):
+        for j in range(4):
+            fic.write(str(matrice[i][j]))
+    fic.close()
 
 
 def load_game() :
-    x = 2
+    fic = open("fichier.tkt","r")
+    print([fic])
+    fic.close()
 
-
-racine.title("2048")
-
-
+    
 button_play = tk.Button(racine, text = "Play", bg = "yellow", height = 2, width = 10, command = start_game)
 button_play.place(x=825, y=100)
 
@@ -109,6 +118,6 @@ start_game()
 #tuiles_down()
 #end_game()
 #save_game()
-#load_game
+#load_game()
 canvas.grid()
 racine.mainloop()
