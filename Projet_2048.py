@@ -1,6 +1,5 @@
 #Projet_2048#
 
-from re import L
 import tkinter as tk
 import random as rd
 
@@ -14,21 +13,27 @@ racine = tk.Tk()
 canvas = tk.Canvas(racine, bg = "orange", height = HAUTEUR1, width = LARGEUR1)
 racine.title("2048")
 
-
+#génère matrice 4*4#
 matrice = [[0] * 4 for i in range(4)]
 
 def start_game() :
 
     canvas.delete("all")
 
+    #créé rectangle#
     canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
-    
+
+    #créé quadrillage avec 3 lignes verticales et horizontales#
     for i in range(1,4) :
         canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
         canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
 
     matrice = [[0] * 4 for i in range(4)]
+
+    #génère 3 chiffres au hazard#
+    #pour la probabilité d'un 2 ou un 4#
     p = rd.randint(1, 10)
+    #pour la probabilité de placement de la tuile dans le quadrillage#
     pi = rd.randint(0,3)
     pj = rd.randint(0,3)
     
@@ -37,13 +42,13 @@ def start_game() :
             
             if p == 1 :
                 matrice[pi][pj] = 4
-                r = canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
-                t = canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="4")
                    
             else :
                 matrice[pi][pj] = 2
-                r = canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
-                t = canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="2")
+                canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+                canvas.create_text(175*pi + 175/2, 175*pj + 175/2, fill="black", font="helvetica, 40", text="2")
                 
     print(matrice)
     
@@ -53,10 +58,11 @@ def tuiles_left() :
     for i in range(4) :
         for j in range(4) :
             if matrice[i][j] != 0 :
-                l = matrice[i][0]
-                matrice[i][0] = l
-                matrice[i][j] = 0
-    print(matrice)
+                
+    
+    
+    
+                print(matrice)
     
 
 
@@ -73,10 +79,16 @@ def tuiles_down() :
 
 
 def end_game() :
-    x = 2
+    #partie terminée,le score est donné#
+    b = 0
+    for i in range(16):
+      b += int(input())
+    print("le score est",b)
+
 
 
 def save_game() :
+    #ouvre un fichier et écrit dedans#
     fic = open("fichier.txt","w")
     for i in range (4):
         for j in range(4):
@@ -85,11 +97,12 @@ def save_game() :
 
 
 def load_game() :
+    #ouvre un fichier et le lit et écrit ce qu'il y a dedans#
     fic = open("fichier.tkt","r")
-    print([fic])
+    print(str(fic))
     fic.close()
 
-    
+#création des boutons#
 button_play = tk.Button(racine, text = "Play", bg = "yellow", height = 2, width = 10, command = start_game)
 button_play.place(x=825, y=100)
 
