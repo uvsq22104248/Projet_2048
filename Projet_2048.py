@@ -14,24 +14,32 @@ canvas = tk.Canvas(racine, bg = "orange", height = HAUTEUR1, width = LARGEUR1)
 
 canvas.create_rectangle((0, 0), (LARGEUR2, HAUTEUR2), fill="grey")
 
-for i in range(0,4) :
+for i in range(1,4) :
     canvas.create_line((i*175, 0), (i*175, HAUTEUR2), fill="black", width=3)
     canvas.create_line((0, i*175), (LARGEUR2, i*175), fill="black", width=3)
 
 
 def start_game() :
     matrice = [[0] * 4 for i in range(4)]
-    
     print(matrice)
+
     p = rd.randint(1,10)
-    for i in range(1,5) :
-        for j in range(1,5) :
+    pi = rd.randint(0,3)
+    pj = rd.randint(0,3)
+
+    for i in range(4) :
+        for j in range(4) :
             if p == 1 :
-                [i][j] = 4
-                canvas.create_rectangle((175*i, 175*j), (175*j, 175*i), fill="yellow")
+                matrice[pi][pj] = 4
             else :
-                [i][j] = 2
-                canvas.create_rectangle((175*i, 175*j), (175*j, 175*i), fill="yellow")
+                matrice[pi][pj] = 2
+
+    if matrice[pi][pj] == 4 :
+        canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+    else :
+        canvas.create_rectangle((175*pi, 175*pj), (175*pi + 175, 175*pj + 175), fill="yellow")
+
+    print(matrice)
 
     
 
