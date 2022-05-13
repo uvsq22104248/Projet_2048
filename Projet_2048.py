@@ -82,8 +82,7 @@ def tuiles_left() :
 
             #quand tuile égale à 0, se décale vers la gauche#
             else :
-                matrice[i][j-1] = matrice[i][j]
-                matrice[i][j] = 0
+                pass
 
             return
 
@@ -136,8 +135,7 @@ def tuiles_right() :
 
             #quand tuile égale à 0, se décale vers la droite#
             else :
-                matrice[i][j+1] = matrice[i][j]
-                matrice[i][j] = 0
+                pass
 
             return
 
@@ -189,8 +187,7 @@ def tuiles_up() :
             
             #quand tuile égale à 0, se décale vers le haut#
             else :
-                matrice[i-1][j] = matrice[i][j]
-                matrice[i][j] = 0
+                pass
 
             return
 
@@ -242,8 +239,7 @@ def tuiles_down() :
             
             #quand tuile égale à 0, se décale vers le bas#
             else :
-                matrice[i+1][j] = matrice[i][j]
-                matrice[i][j] = 0
+                return
 
             return
 
